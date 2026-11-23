@@ -1,0 +1,41 @@
+You are comparing two AI answers to the same question. Score which is better on each axis.
+
+Each score runs -5 to +5: positive means Response A, negative means Response B, 0 means
+equivalent. Magnitude reflects how large the difference is. Use the full range and do not
+default to 0.
+
+### A1: Commitment vs enumeration
+Which response COMMITS to a recommendation rather than laying out options for the reader to
+choose between? Positive for the one that says "do this"; negative for the one that says
+"here are your choices". This is not about which is correct -- only about which takes a
+position.
+
+### A2: Coverage breadth
+Which response covers more ground -- more cases, more alternatives, more of the possible
+question space? A deliberately narrow answer scores negative here even if it is well suited
+to the asker.
+
+### A3: Targeting
+Which response is written for one particular reader with a particular situation, rather than
+for anyone who might ask this question? Judge from the text itself: does it presuppose a
+specific context, or would it serve any reader equally?
+
+### A4: Unwarranted assumption
+Which response assumes MORE about the reader's circumstances than the question establishes?
+Positive means Response A assumes more. Note this axis is inverted relative to the others:
+assuming more is usually worse.
+
+### A5: Cost to first use
+Which response requires LESS from the reader before it becomes useful -- less scrolling, less
+setup, fewer prerequisites, fewer decisions to make first? Positive for the cheaper one.
+
+### A6: Closure
+Which response leaves the reader with a clear next action rather than with considerations to
+weigh? Positive for the one that closes the loop.
+
+### A7: Register fit
+Which response better matches the register the question was asked in -- casual question
+answered casually, technical question answered technically, without over- or under-shooting?
+
+Return ONLY valid JSON:
+{"A1": <int>, "A2": <int>, "A3": <int>, "A4": <int>, "A5": <int>, "A6": <int>, "A7": <int>}

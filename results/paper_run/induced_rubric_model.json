@@ -1,0 +1,540 @@
+{
+ "_note": "Paper run of the induced-rubric model (Table 3 and Table 5 of the paper) on the paper's 291 clear-preference pairs, before the release audit and de-identification. Rubrics were induced and scored by the same LLM within each outer fold, using only that fold's training participants.",
+ "model": "gpt-6-sol",
+ "pairs": 291,
+ "majority": 55.0,
+ "rubrics_per_fold": [
+  [
+   {
+    "kind": "query_memory",
+    "name": "Personalization opportunity",
+    "measures": "How much the available memories could materially improve the answer to this question, judged without reading the response.",
+    "high": "Relevant memories could meaningfully shape the answer.",
+    "low": "The task is self-contained or the memories offer little useful context."
+   },
+   {
+    "kind": "query_memory",
+    "name": "Unresolved reference ambiguity",
+    "measures": "Whether the question leaves an essential item, statement, or other referent unidentified despite the available memories.",
+    "high": "A specific answer requires clarification of the referent.",
+    "low": "The referent is clear enough to answer."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Relevant fact selection",
+    "measures": "Whether memories used in the response help with this question rather than merely sharing its topic.",
+    "high": "The response uses pertinent facts and leaves unrelated ones aside.",
+    "low": "It draws on memories that do not help answer the question."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Actionable tailoring",
+    "measures": "Whether relevant memories produce useful changes to the response’s options, examples, criteria, or next steps, including when a salient constraint would otherwise be missed.",
+    "high": "Remembered context concretely improves the advice.",
+    "low": "Relevant context is ignored or mentioned without changing the advice."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Personal detail discretion",
+    "measures": "Whether the response avoids explicitly surfacing remembered personal history when doing so adds little value, especially for sensitive details.",
+    "high": "It applies context unobtrusively and mentions only details needed to help.",
+    "low": "It gratuitously recites personal or sensitive history."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Inference calibration",
+    "measures": "Whether claims and the precision of tailoring stay within what the memories establish, without turning one-off clues into certain facts or enduring patterns.",
+    "high": "It distinguishes known facts from possibilities and matches specificity to the evidence.",
+    "low": "It asserts unsupported motives, patterns, or precise circumstances."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Clarification before anchoring",
+    "measures": "Whether the response seeks essential missing information instead of letting a remembered clue settle an ambiguous request.",
+    "high": "It asks for the missing detail or addresses plausible interpretations without presuming which one applies.",
+    "low": "It assumes a remembered item or event is the unspecified subject."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Preference proportionality",
+    "measures": "Whether remembered preferences and practical constraints guide recommendations without unnecessarily excluding options the request calls for.",
+    "high": "It prioritizes fitting options while preserving useful alternatives.",
+    "low": "It treats a tentative preference or constraint as an absolute limit."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Current statement priority",
+    "measures": "Whether the response gives the user’s current account priority over a conflicting remembered pattern.",
+    "high": "It addresses the newly stated circumstances even when memory suggests otherwise.",
+    "low": "It dismisses the current account in favor of memory."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Grounded interaction recall",
+    "measures": "When asked about past interactions, whether the response summarizes available memories without claiming they establish an exact or unsupported history.",
+    "high": "It provides a useful, qualified account grounded in the memories.",
+    "low": "It denies available context or invents an exact interaction history."
+   },
+   {
+    "kind": "quality",
+    "name": "Direct task fulfillment",
+    "measures": "Whether the response answers the stated question accurately and usefully, independent of personalization, while acknowledging material uncertainty or missing information.",
+    "high": "It covers the important parts with reliable, actionable help.",
+    "low": "It misses the task, misleads, or leaves no practical path forward."
+   }
+  ],
+  [
+   {
+    "kind": "query_memory",
+    "name": "Personalization opportunity",
+    "measures": "Whether the memories contain context that could materially improve the answer to this question.",
+    "high": "A remembered preference, constraint, skill, or circumstance could change the advice.",
+    "low": "The memories offer little useful context for the question."
+   },
+   {
+    "kind": "query_memory",
+    "name": "Memory sufficiency",
+    "measures": "Whether the memories supply enough specific information to personalize the answer without guessing or asking for facts already known.",
+    "high": "They provide a concrete starting point for the task.",
+    "low": "They are too broad or omit information needed for the task."
+   },
+   {
+    "kind": "query_memory",
+    "name": "Memory use boundary",
+    "measures": "Whether the question or memories establish an explicit boundary against using remembered information.",
+    "high": "The user explicitly asks not to use or reference memory.",
+    "low": "No such boundary is present."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Relevant fact selection",
+    "measures": "Whether remembered facts the response uses bear directly on the request, rather than merely sharing its topic.",
+    "high": "Invoked facts help answer the question.",
+    "low": "The response brings in peripheral or unrelated memories."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Actionable personalization",
+    "measures": "Whether relevant memories improve the substance, examples, or next steps of the answer rather than serving as decorative references.",
+    "high": "The response turns remembered context into a useful adjustment or recommendation.",
+    "low": "It mentions relevant context but gives essentially generic advice."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Prior progress awareness",
+    "measures": "Whether the response accounts for activities or steps the memories say the user has already completed.",
+    "high": "It builds on prior progress without assuming the user wants to repeat it.",
+    "low": "It presents completed steps as new or recommends repeating past activities without reason."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Proportionate influence",
+    "measures": "Whether memories inform the answer without settling an open decision or narrowing the scope of the user's question.",
+    "high": "Personal context sharpens the answer while the requested options and scope remain intact.",
+    "low": "A preference is treated as a decision, or a broad question is reduced to one remembered circumstance."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Evidence-bounded inference",
+    "measures": "Whether claims about the user or their situation stay within what the memories establish.",
+    "high": "The response distinguishes remembered facts from possibilities that need confirmation.",
+    "low": "It turns a past event or interest into an unsupported claim about a current goal, habit, or circumstance."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Ambiguity restraint",
+    "measures": "Whether memory is used without prematurely resolving an unclear referent or intent in the question.",
+    "high": "The response asks for missing context or offers a qualified interpretation.",
+    "low": "It commits to an interpretation based solely on a remembered incident or interest."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Disclosure discretion",
+    "measures": "Whether the response avoids explicitly resurfacing personal or sensitive memories when naming them adds little to the answer.",
+    "high": "It uses context quietly or mentions a detail only when doing so helps.",
+    "low": "It recites unnecessary history, including sensitive details, to signal familiarity."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Safety-preserving personalization",
+    "measures": "Whether remembered health or other safety-relevant details inform guidance without being treated as sufficient evidence for a risky conclusion.",
+    "high": "The response uses the detail proportionately and retains appropriate checks or uncertainty.",
+    "low": "It uses a remembered detail to make an unsupported health claim or bypass a safety consideration."
+   },
+   {
+    "kind": "quality",
+    "name": "Factual calibration",
+    "measures": "Whether factual claims and predicted outcomes are accurate and expressed with confidence appropriate to the evidence, independent of memory use.",
+    "high": "Uncertain claims and outcomes are appropriately qualified.",
+    "low": "The response asserts uncertain facts or guarantees outcomes without support."
+   },
+   {
+    "kind": "quality",
+    "name": "Practical guidance",
+    "measures": "Whether the answer provides concrete, usable information or steps rather than vague advice, independent of personalization.",
+    "high": "The user can act on the guidance, with relevant criteria or options.",
+    "low": "The guidance is too vague to use."
+   },
+   {
+    "kind": "quality",
+    "name": "Direct answer structure",
+    "measures": "Whether the response addresses the main request clearly before optional detail or follow-up questions.",
+    "high": "It answers the question in an organized way and asks only for information needed to refine the answer.",
+    "low": "It substitutes an intake questionnaire or tangents for the requested answer."
+   }
+  ],
+  [
+   {
+    "kind": "query_memory",
+    "name": "Personalization opportunity",
+    "measures": "How much the question and available memories, considered before reading the response, warrant tailoring the answer to this user.",
+    "high": "Relevant memories could materially improve the requested answer.",
+    "low": "The question can be answered just as well without the memories."
+   },
+   {
+    "kind": "query_memory",
+    "name": "Disambiguation potential",
+    "measures": "Whether the memories provide a sound basis for interpreting an underspecified question.",
+    "high": "They clearly favor a plausible intended meaning.",
+    "low": "They leave multiple meanings equally plausible."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Relevant fact selection",
+    "measures": "Whether the response draws on memories pertinent to the current task and excludes unrelated facts.",
+    "high": "It uses relevant context and leaves incidental history out.",
+    "low": "It overlooks pertinent facts or imports irrelevant ones."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Practical personalization",
+    "measures": "Whether relevant memories improve the substance of the answer, such as its actions, examples, starting point, or explanatory level.",
+    "high": "The answer changes in a useful, concrete way to fit the user.",
+    "low": "It remains generic or merely mentions a remembered fact."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Inference discipline",
+    "measures": "Whether claims about the user distinguish established memories from uncertain implications.",
+    "high": "It qualifies inferences and does not turn isolated events into established traits or routines.",
+    "low": "It presents unsupported conclusions about the user as facts."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Personal detail discretion",
+    "measures": "Whether explicit references to remembered personal or sensitive details are necessary, proportionate, and tactful.",
+    "high": "It applies context quietly or mentions it briefly when useful.",
+    "low": "It recites or exposes personal history unnecessarily."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Constraint priority",
+    "measures": "Whether the response applies remembered preferences while giving precedence to explicit current instructions and other governing constraints.",
+    "high": "It accommodates applicable preferences without overriding the current task or safety requirements.",
+    "low": "It ignores an applicable preference or follows one despite a conflicting constraint."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Context continuity",
+    "measures": "Whether the response uses available memories to avoid asking the user to repeat known, relevant information.",
+    "high": "It proceeds from known context and asks only for consequential missing information.",
+    "low": "It asks again for information already available in memory."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Goal alignment",
+    "measures": "Whether memory-based tailoring serves the goal stated in the current question rather than redirecting the answer to a remembered topic.",
+    "high": "Personalization sharpens the requested help.",
+    "low": "A related memory diverts the response from the user's request."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Memory scope honesty",
+    "measures": "Whether the response accurately represents what its saved memories do and do not provide, particularly when asked about past interactions.",
+    "high": "It distinguishes available notes from a complete conversation record.",
+    "low": "It presents snippets as a complete history or denies relevant notes it has."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Uncertain intent restraint",
+    "measures": "Whether the response uses memories to inform possible next steps without inventing a request when the user's intent is unclear.",
+    "high": "It acknowledges plausible interpretations and seeks clarification where needed.",
+    "low": "It treats a memory-based guess as the user's request."
+   },
+   {
+    "kind": "quality",
+    "name": "Actionable completeness",
+    "measures": "Whether the response answers the question with enough clear, usable guidance, independent of personalization.",
+    "high": "It provides the essential explanation, steps, options, or decision rule.",
+    "low": "It is vague, incomplete, or stops short of answering."
+   },
+   {
+    "kind": "quality",
+    "name": "Missing input handling",
+    "measures": "Whether the response recognizes information required to complete the request that was not supplied.",
+    "high": "It asks for the necessary input and offers a useful next step where possible.",
+    "low": "It assumes the input exists or fabricates a completed result."
+   },
+   {
+    "kind": "quality",
+    "name": "Factual reliability",
+    "measures": "Whether factual claims, procedures, and statements about available tools are accurate and appropriately qualified, independent of memory use.",
+    "high": "Claims are accurate, with uncertainty stated where warranted.",
+    "low": "It confidently invents facts or capabilities or makes unsupported guarantees."
+   }
+  ],
+  [
+   {
+    "kind": "query_memory",
+    "name": "Personalization opportunity",
+    "measures": "How much the question could benefit from relevant remembered facts, judged before reading a response.",
+    "high": "Memories could materially improve a recommendation, decision, or plan.",
+    "low": "The task is self-contained or the memories are unrelated."
+   },
+   {
+    "kind": "query_memory",
+    "name": "Context sufficiency",
+    "measures": "Whether the question and memories establish the details needed for a specific, reliable answer.",
+    "high": "The relevant circumstances are established well enough to answer.",
+    "low": "A decision-critical detail remains unknown."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Relevant fact selection",
+    "measures": "Whether the response selects remembered facts that bear on the request rather than unrelated available facts.",
+    "high": "The facts it uses have a clear connection to the task.",
+    "low": "It uses unrelated memories in shaping the answer."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Practical tailoring",
+    "measures": "Whether applicable remembered preferences, goals, resources, or experience concretely improve the answer's recommendations or options.",
+    "high": "Memory changes the advice in a useful, defensible way.",
+    "low": "The advice remains generic or merely mentions relevant memory without applying it."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Inference fidelity",
+    "measures": "Whether claims about the user stay within what memories establish, distinguishing known details from guesses and identifying essential unknowns.",
+    "high": "It uses known facts without inventing habits, motives, abilities, or missing specifics.",
+    "low": "It presents an inference as fact or overlooks a consequential gap in what is known."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Ambiguity handling",
+    "measures": "Whether the response uses memory to interpret unclear references without committing to an interpretation more strongly than the evidence permits.",
+    "high": "It uses a strong contextual clue provisionally and seeks clarification when necessary.",
+    "low": "It ignores a useful clue or treats a weak one as conclusive."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Recall discretion",
+    "measures": "Whether explicitly mentioning remembered personal details adds enough value to justify their disclosure, especially when they are sensitive or surprising.",
+    "high": "It applies context unobtrusively and mentions personal history only when useful.",
+    "low": "It recites tangential or sensitive memories unnecessarily."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Current-task priority",
+    "measures": "Whether remembered context remains subordinate to what the user currently asked, including the requested subject and format.",
+    "high": "It completes the present task and uses memory only to refine it.",
+    "low": "Memory redirects the answer, overrides stated criteria, or imposes an unrequested format."
+   },
+   {
+    "kind": "quality",
+    "name": "Actionable task progress",
+    "measures": "Whether the response provides a clear, usable answer or next step, asking for clarification only when needed.",
+    "high": "The requested help is easy to find and act on.",
+    "low": "It is vague, stalls unnecessarily, or fails to advance the request."
+   },
+   {
+    "kind": "quality",
+    "name": "Material qualifications",
+    "measures": "Whether the response flags conditions that could materially change its practical answer.",
+    "high": "It states consequential caveats where applicable.",
+    "low": "It presents a conditional answer as universally applicable."
+   }
+  ],
+  [
+   {
+    "kind": "query_memory",
+    "name": "Personalization opportunity",
+    "measures": "How directly the question and available memories support a useful, question-specific adaptation, judged without reference to a response.",
+    "high": "Memories supply relevant goals, constraints, experience, or context that could materially shape the answer.",
+    "low": "The question is self-contained or the memories offer little relevant guidance."
+   },
+   {
+    "kind": "query_memory",
+    "name": "Memory specificity",
+    "measures": "Whether the available memories establish the relevant context or preference clearly enough to guide this particular answer.",
+    "high": "A pertinent preference or context is clearly established.",
+    "low": "The apparent preference or context rests only on a weak hint."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Contextual interpretation",
+    "measures": "Whether the response uses clear remembered context to resolve an ambiguous reference without letting weak associations dictate its meaning.",
+    "high": "It recognizes a well-supported referent while leaving room for correction where needed.",
+    "low": "It ignores a clear referent or invents an interpretation from loosely related memories."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Relevant fact selection",
+    "measures": "Whether memories used in the response bear materially on the request rather than merely sharing a topic or word.",
+    "high": "It draws on facts that help answer this particular question.",
+    "low": "It introduces incidental or unrelated remembered facts."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Actionable tailoring",
+    "measures": "Whether relevant memories materially improve the response’s recommendations or next steps, including by incorporating useful constraints and preferences.",
+    "high": "It offers concrete advice fitted to remembered capabilities, constraints, or preferences.",
+    "low": "It mentions personal details but gives essentially generic advice, or overlooks a relevant constraint that would improve the answer."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Disclosure discretion",
+    "measures": "Whether the response avoids needlessly surfacing remembered personal details, especially sensitive ones.",
+    "high": "It uses context naturally without reciting irrelevant or private history.",
+    "low": "It foregrounds personal or sensitive details that add little to the answer."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Inference restraint",
+    "measures": "Whether conclusions about the user drawn from memories stay within what those memories establish.",
+    "high": "It distinguishes known facts from tentative inferences and qualifies uncertain connections.",
+    "low": "It treats a past activity, incidental habit, or weak clue as proof of a current circumstance, skill, or need."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Present context priority",
+    "measures": "Whether the response gives the user’s current description priority over older or potentially inconsistent memories.",
+    "high": "It addresses the situation as presently stated and uses older context only where compatible.",
+    "low": "It overrides a reported change or current constraint with an older remembered pattern."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Goal and scope fidelity",
+    "measures": "Whether personalization supports the user’s present priority and preserves the breadth of options requested.",
+    "high": "It uses remembered preferences without displacing the stated goal or narrowing the requested scope.",
+    "low": "It steers toward a different goal or substitutes remembered tastes for the range of options requested."
+   },
+   {
+    "kind": "memory_use",
+    "name": "Experience-aware novelty",
+    "measures": "Whether suggestions for future activities account for relevant experiences the user has already had.",
+    "high": "It offers fresh options or explicitly gives a new angle on a familiar activity.",
+    "low": "It presents a repeated trip or activity as though it were necessarily new."
+   },
+   {
+    "kind": "quality",
+    "name": "Practical request fulfillment",
+    "measures": "Whether the response directly supplies a usable answer, with necessary steps, comparisons, qualifications, or requests for missing information, independent of memory.",
+    "high": "It advances the task with sufficient concrete detail and asks for clarification only when needed.",
+    "low": "It delays or sidetracks the answer, omits a consequential element, or gives advice too vague to use."
+   },
+   {
+    "kind": "quality",
+    "name": "Factual reliability",
+    "measures": "Whether the response’s information and claims are accurate and appropriately qualified, independent of personalization.",
+    "high": "It distinguishes established information from uncertainty and avoids misleading claims.",
+    "low": "It makes inaccurate or overconfident claims that could misdirect the user."
+   }
+  ]
+ ],
+ "accuracy": {
+  "Form only (HEAD, LEN)": {
+   "accuracy": 66.7,
+   "ci95": [
+    60.8,
+    72.1
+   ]
+  },
+  "Memory-blind quality": {
+   "accuracy": 58.1,
+   "ci95": [
+    51.7,
+    64.1
+   ]
+  },
+  "Response only (form + quality)": {
+   "accuracy": 68.0,
+   "ci95": [
+    62.3,
+    73.2
+   ]
+  },
+  "Memory only (memory use + query-memory)": {
+   "accuracy": 62.5,
+   "ci95": [
+    56.1,
+    68.8
+   ]
+  },
+  "Ours (response + memory)": {
+   "accuracy": 71.8,
+   "ci95": [
+    65.7,
+    77.5
+   ]
+  }
+ },
+ "accuracy_by_generator": {
+  "claude-opus-5": {
+   "Form only (HEAD, LEN)": 71.1,
+   "Memory-blind quality": 44.4,
+   "Response only (form + quality)": 77.8,
+   "Memory only (memory use + query-memory)": 71.1,
+   "Ours (response + memory)": 82.2,
+   "pairs": 45
+  },
+  "gemini-3.1-pro-preview": {
+   "Form only (HEAD, LEN)": 69.9,
+   "Memory-blind quality": 66.2,
+   "Response only (form + quality)": 71.3,
+   "Memory only (memory use + query-memory)": 65.4,
+   "Ours (response + memory)": 75.0,
+   "pairs": 136
+  },
+  "gpt-5.2": {
+   "Form only (HEAD, LEN)": 60.9,
+   "Memory-blind quality": 53.6,
+   "Response only (form + quality)": 60.0,
+   "Memory only (memory use + query-memory)": 55.5,
+   "Ours (response + memory)": 63.6,
+   "pairs": 110
+  }
+ },
+ "coverage_accuracy": {
+  "Response only (form + quality)": {
+   "100%": 68.0,
+   "75%": 75.5,
+   "50%": 82.2,
+   "25%": 83.1
+  },
+  "Memory only (memory use + query-memory)": {
+   "100%": 62.5,
+   "75%": 66.1,
+   "50%": 68.8,
+   "25%": 64.2
+  },
+  "Ours (response + memory)": {
+   "100%": 71.8,
+   "75%": 76.2,
+   "50%": 83.7,
+   "25%": 88.8
+  }
+ },
+ "paired_differences_pp": {
+  "Ours - Response only": [
+   3.8,
+   -0.6,
+   8.2
+  ],
+  "Ours - Memory only": [
+   9.3,
+   4.3,
+   14.4
+  ]
+ }
+}

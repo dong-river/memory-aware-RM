@@ -1,0 +1,17 @@
+{
+  "orientation": "Each feature compares the memory-conditioned response with the response without memory and is signed so that larger values favour the memory-conditioned response.",
+  "features": [
+    {"name": "HEAD", "block": "response", "definition": "Heading difference: number of headings in the memory-conditioned response minus that in the response without memory."},
+    {"name": "LEN", "block": "response", "definition": "Relative length: log ratio of response lengths, oriented from the memory-conditioned to the no-memory response."},
+    {"name": "REL", "block": "memory", "definition": "Memory relevance: relevance of the retrieved memories to the current query, scored without viewing either response."},
+    {"name": "PROP", "block": "memory", "definition": "Assumption proportionality: whether personal assumptions are justified by the available memory evidence, compared between responses."},
+    {"name": "ASSUMP", "block": "memory", "definition": "Unwarranted personal assumptions: degree to which a response assumes more about the user than the query establishes, compared between responses."},
+    {"name": "CLOSURE", "block": "response", "definition": "Actionable closure: whether a response supplies a clear next action rather than only considerations to weigh, compared between responses."},
+    {"name": "AXIS", "block": "response", "definition": "Advisory orientation: relative density of advisory versus factual language, (advisory - factual) / (advisory + factual), averaged across both responses."},
+    {"name": "COMMIT", "block": "response", "definition": "Recommendation commitment: commitment to a recommendation rather than enumeration of alternatives, compared between responses."},
+    {"name": "OPT", "block": "response", "definition": "Option framing: density of options and trade-off language, averaged across both responses."},
+    {"name": "BREADTH", "block": "response", "definition": "Coverage breadth: breadth of the information and alternatives covered, compared between responses."},
+    {"name": "COST", "block": "response", "definition": "Cost to first use: effort required before the user can act on an answer, compared between responses."},
+    {"name": "REGISTER", "block": "response", "definition": "Register fit: appropriateness of the response's language and register for the request, compared between responses."}
+  ]
+}

@@ -1,0 +1,9 @@
+The data in this folder (memory_preferences.jsonl, metadata.json) and the prompts in ../prompts/
+are licensed under the Creative Commons Attribution-NonCommercial 4.0 International License
+(CC BY-NC 4.0): https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+You may share and adapt the material for non-commercial purposes, provided you give appropriate
+credit (cite the paper), link to the license and indicate if changes were made.
+
+The model responses were generated with GPT-5.2, Gemini-3.1-Pro and Claude-Opus-5; their use may
+also be subject to the respective providers' terms.

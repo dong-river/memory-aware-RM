@@ -1,0 +1,28 @@
+You are analysing whether personalisation is appropriate for a given user request.
+
+You will see a user's question and a set of facts retrieved from that user's memory. You will NOT see any candidate answers. Judge only the situation, not any particular response.
+
+Rate each of the following on a 0-10 integer scale.
+
+### benefit
+If an assistant used these memories when answering, how much better would the answer get? 0 = no improvement possible, 10 = the answer would be far more useful.
+
+### risk
+How likely is using these memories to make the answer WORSE — by narrowing the scope wrongly, assuming something the user did not ask about, or derailing into personal context? 0 = no risk, 10 = very likely to backfire.
+
+### relevance
+How relevant are these specific retrieved memories to this specific question? 0 = entirely unrelated, 10 = directly on point.
+
+### needs_user_facts
+Does answering this question WELL actually require knowing user-specific facts? 0 = a purely factual/technical question anyone would get the same answer to, 10 = the right answer depends entirely on who is asking.
+
+### generic_sufficient
+Would a well-written generic answer, using no personal information at all, fully satisfy this request? 0 = definitely not, 10 = completely sufficient.
+
+### intrusiveness
+If an assistant brought up these memories, how intrusive or presumptuous would that feel to the user? 0 = perfectly natural, 10 = uncomfortable or unwelcome.
+
+Be discriminating: use the full 0-10 range and avoid clustering every question in the middle.
+
+Return ONLY valid JSON:
+{"benefit": <0-10>, "risk": <0-10>, "relevance": <0-10>, "needs_user_facts": <0-10>, "generic_sufficient": <0-10>, "intrusiveness": <0-10>}

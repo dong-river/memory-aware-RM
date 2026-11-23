@@ -1,0 +1,12 @@
+section,group,pairs,participants,memory_win_rate,no_memory_win_rate,memory_ci_low,memory_ci_high
+Overall,All pairs,262,73,0.4542,0.5458,0.375,0.5339
+Prompting regime,Conservative,50,32,0.48,0.52,0.3091,0.6512
+Prompting regime,Ordinary,106,41,0.5377,0.4623,0.4015,0.6778
+Prompting regime,Aggressive,49,29,0.449,0.551,0.3,0.6
+Prompting regime,Generic-then-personalized,57,35,0.2807,0.7193,0.1731,0.3913
+Generator (ordinary prompting),GPT-5.2,41,27,0.7317,0.2683,0.5952,0.8649
+Generator (ordinary prompting),Gemini-3.1-Pro,38,23,0.2632,0.7368,0.122,0.439
+Generator (ordinary prompting),Claude-Opus-5,27,8,0.6296,0.3704,0.3462,0.8571
+Generator (all regimes),GPT-5.2,106,51,0.5472,0.4528,0.4595,0.6421
+Generator (all regimes),Gemini-3.1-Pro,117,48,0.2735,0.7265,0.1765,0.376
+Generator (all regimes),Claude-Opus-5,39,9,0.7436,0.2564,0.5,0.913

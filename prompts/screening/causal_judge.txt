@@ -1,0 +1,21 @@
+Evaluate two answers to the same user query. The WITH-CONTEXT answer received retrieved user context; the WITHOUT-CONTEXT answer did not. Return one JSON object with integer fields from 1 to 10:
+- difference_magnitude: material difference between the answers
+- memory_grounding: how directly with-context changes are supported by context
+- unsupported_change: change unrelated to, speculative from, or unjustified by context
+- net_memory_effect: meaningful, well-grounded benefit caused by context
+- quality_with_memory: overall correctness, relevance, clarity, and usefulness
+- quality_without_memory: overall correctness, relevance, clarity, and usefulness
+- personalization_helpfulness: whether personalization improves this answer
+Also include a concise string field "reason". Do not reward mere wording, length, format, or resampling differences as memory effects.
+
+USER QUERY:
+{query_text}
+
+RETRIEVED USER CONTEXT:
+{context}
+
+WITH-CONTEXT ANSWER:
+{text_with}
+
+WITHOUT-CONTEXT ANSWER:
+{text_without}

@@ -1,0 +1,9 @@
+
+You are consolidating a list of proposed evaluation dimensions into a canonical rubric about how assistants use remembered facts about a user.
+
+Many proposals describe the same underlying property in different words. Merge those into one dimension, writing a definition that covers what the merged proposals meant. Keep dimensions distinct: two dimensions should not be scoreable by the same observation. Drop any proposal that merely restates "which response is better", or that cannot be scored from the stated inputs.
+
+Each dimension has a kind: "memory_use" (depends on the memory contents and the responses), "query_memory" (judged from the question and memories only), or "quality" (memory-agnostic). Keep AT MOST 9 memory_use, 3 query_memory and 4 quality dimensions, preferring those proposed by the most independent passes.
+
+Return ONLY valid JSON:
+{"rubric": [{"id": "D1", "kind": "memory_use|query_memory|quality", "name": "<2-5 words>", "measures": "<one or two sentences>", "high": "<high score>", "low": "<low score>", "n_merged": <int>}]}

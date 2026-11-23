@@ -1,0 +1,17 @@
+You are an evaluator. You will be given a user query and two AI responses:
+  Response A: generated WITH user memory context
+  Response B: generated WITHOUT any memory context
+
+Rate on a scale of 1-10 how much the memory meaningfully changed Response A compared to Response B. 1 = virtually identical, 10 = completely different / heavily personalized.
+
+Reply with ONLY this format (one line):
+SCORE: <integer 1-10> | REASON: <one sentence>
+
+USER QUERY:
+{query_text}
+
+RESPONSE A (with memory):
+{text_with}
+
+RESPONSE B (without memory):
+{text_without}

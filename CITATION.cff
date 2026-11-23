@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite the paper."
+title: "Memory-Aware Reward Modeling: Learning Human Preferences for LLM Memory Use"
+type: dataset
+authors:
+  - {given-names: Yijiang River, family-names: Dong}
+  - {given-names: Zexue, family-names: He}
+  - {given-names: Cheng, family-names: Yu}
+  - {given-names: Tiancheng, family-names: Hu}
+  - {given-names: Michael J, family-names: Ryan}
+  - {given-names: Jan, family-names: Batzner}
+  - {given-names: Zheng, family-names: Hui}
+  - {given-names: Shaolong, family-names: Wu}
+  - {given-names: Orestis, family-names: Papakyriakopoulos}
+  - {given-names: Alex, family-names: Pentland}
+  - {given-names: Nigel, family-names: Collier}
+  - {given-names: Jiaxin, family-names: Pei}
+preferred-citation:
+  type: article
+  title: "Memory-Aware Reward Modeling: Learning Human Preferences for LLM Memory Use"
+  authors:
+    - {given-names: Yijiang River, family-names: Dong}
+    - {given-names: Zexue, family-names: He}
+    - {given-names: Cheng, family-names: Yu}
+    - {given-names: Tiancheng, family-names: Hu}
+    - {given-names: Michael J, family-names: Ryan}
+    - {given-names: Jan, family-names: Batzner}
+    - {given-names: Zheng, family-names: Hui}
+    - {given-names: Shaolong, family-names: Wu}
+    - {given-names: Orestis, family-names: Papakyriakopoulos}
+    - {given-names: Alex, family-names: Pentland}
+    - {given-names: Nigel, family-names: Collier}
+    - {given-names: Jiaxin, family-names: Pei}
+  journal: "arXiv preprint arXiv:2610.31272"
+  year: 2026
+  url: "https://arxiv.org/abs/2610.31272"

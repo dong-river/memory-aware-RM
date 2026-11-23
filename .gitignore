@@ -1,0 +1,8 @@
+# API call caches and local predictions are regenerated locally
+/runs/
+/predictions/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+features/rubric_features_rescored.csv

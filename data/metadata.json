@@ -1,0 +1,46 @@
+{
+  "name": "Memory-Aware Reward Modeling: clear-preference pairs (de-identified release)",
+  "version": "1.0",
+  "paper": "https://arxiv.org/abs/2610.31272",
+  "file": "memory_preferences.jsonl",
+  "sha256": "c29183964623033aa6186bb104b79f9a2c3f41f24b9155cd1e1e08fd1a22440b",
+  "selection": "Paper collection audit on both exports; memory-vs-no-memory comparisons with a_much/b_much labels; meta/muse-spark-1.3 excluded.",
+  "deidentification": "Direct identifiers, recruitment IDs and operational metadata removed; random participant IDs; per-pair data minimisation (only the nine memories retrieved for each pair); contact details masked; quasi-identifiers replaced by typed placeholders numbered per participant ([PERSON_1], [LOCATION_1], ...); GDPR Art. 9 special-category, Art. 10 offence and third-party information removed or generalised, and pairs whose responses relied on such information withheld.",
+  "summary": {
+    "pairs": 262,
+    "participants": 73,
+    "by_generator": {
+      "anthropic/claude-opus-5": 39,
+      "google/gemini-3.1-pro-preview": 117,
+      "gpt-5.2": 106
+    },
+    "memory_preferred": 119,
+    "memories_removed": 23,
+    "by_collection_wave": {
+      "wave2": 73,
+      "wave1": 189
+    }
+  },
+  "processing_counts": {
+    "contact_details_masked": 2,
+    "memories_edited": 33,
+    "memories_edited:criminal_offence": 1,
+    "memories_edited:ethnic_origin": 9,
+    "memories_edited:exact_age": 2,
+    "memories_edited:health": 6,
+    "memories_edited:religion": 8,
+    "memories_edited:third_party": 7,
+    "memories_removed": 23,
+    "memories_removed:health": 17,
+    "memories_removed:political_opinion": 1,
+    "memories_removed:religion": 1,
+    "memories_removed:sex_life": 1,
+    "memories_removed:third_party": 3,
+    "pairs_dropped": 22,
+    "pairs_dropped:health": 15,
+    "pairs_dropped:religion": 3,
+    "pairs_dropped:third_party": 4,
+    "pairs_dropped_participant": 11,
+    "replacements": 82
+  }
+}

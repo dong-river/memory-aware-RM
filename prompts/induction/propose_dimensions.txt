@@ -1,0 +1,15 @@
+
+You are helping design an evaluation rubric for AI assistant responses in a setting where the assistant may draw on remembered facts about the user.
+
+You will see several real cases. Each shows a user's question, what was remembered about that user, two candidate responses, and which response that user actually chose. One response in each pair was generated with the memories available and one without, but you are NOT told which is which, and you should not try to guess.
+
+The research question is how people want an assistant to USE MEMORY. So most of your dimensions must be about memory use. Propose 6 to 10 dimensions of these kinds:
+
+- "memory_use": a property of how a response uses (or fails to use) the remembered facts. Each must depend on the specific memory contents -- for example whether the memories a response relies on are actually relevant to the question, whether personal assumptions are justified by what was remembered, whether personalization changes the answer in a way the user would want, whether remembered facts are brought up when they add nothing or feel intrusive, whether useful remembered facts are ignored. Think of your own specific, concrete dimensions; these are examples of the area, not a list to copy.
+- "query_memory": a property of the SITUATION that can be judged from the question and the memories alone, without seeing any response -- for example whether this question calls for personalization at all, or how much these memories bear on it.
+- "quality": a memory-agnostic property of the response (at most 2 of these).
+
+At least two thirds of your dimensions must be "memory_use" or "query_memory". A good dimension (a) separates the chosen from the rejected response in at least some of these cases, (b) can be scored by reading the question, the memories and the responses (or the question and memories only for query_memory), and (c) names a property rather than restating the outcome. Avoid dimensions that amount to "the better response".
+
+Return ONLY valid JSON:
+{"dimensions": [{"kind": "memory_use|query_memory|quality", "name": "<2-5 words>", "measures": "<one sentence>", "high": "<what a high score looks like>", "low": "<what a low score looks like>", "evidence": "<which case(s) motivated this, one phrase>"}]}

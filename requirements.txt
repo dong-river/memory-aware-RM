@@ -1,0 +1,8 @@
+numpy>=1.24
+scikit-learn>=1.1
+matplotlib>=3.7
+# LLM judges
+openai>=1.40
+# Skywork baseline
+torch>=2.2
+transformers>=4.45
