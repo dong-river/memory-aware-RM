@@ -1,0 +1,122 @@
+{
+ "description": "Counts of all audited memory-vs-no-memory judgments behind the release, including 'slightly better' and 'about the same' (tie). The *_much judgments are the pairs in memory_preferences.jsonl; the other judgments are not released as records.",
+ "participants": 84,
+ "judgments": 658,
+ "outcomes": [
+  "memory_much",
+  "memory_slightly",
+  "tie",
+  "no_memory_slightly",
+  "no_memory_much"
+ ],
+ "cells": [
+  {
+   "prompt_variant": "aggressive",
+   "generator": "anthropic/claude-opus-5",
+   "memory_much": 3,
+   "memory_slightly": 1,
+   "tie": 2,
+   "no_memory_slightly": 0,
+   "no_memory_much": 0
+  },
+  {
+   "prompt_variant": "aggressive",
+   "generator": "google/gemini-3.1-pro-preview",
+   "memory_much": 8,
+   "memory_slightly": 7,
+   "tie": 3,
+   "no_memory_slightly": 16,
+   "no_memory_much": 14
+  },
+  {
+   "prompt_variant": "aggressive",
+   "generator": "gpt-5.2",
+   "memory_much": 11,
+   "memory_slightly": 16,
+   "tie": 19,
+   "no_memory_slightly": 18,
+   "no_memory_much": 13
+  },
+  {
+   "prompt_variant": "generic_then_personalized",
+   "generator": "anthropic/claude-opus-5",
+   "memory_much": 3,
+   "memory_slightly": 1,
+   "tie": 2,
+   "no_memory_slightly": 1,
+   "no_memory_much": 0
+  },
+  {
+   "prompt_variant": "generic_then_personalized",
+   "generator": "google/gemini-3.1-pro-preview",
+   "memory_much": 6,
+   "memory_slightly": 5,
+   "tie": 3,
+   "no_memory_slightly": 16,
+   "no_memory_much": 27
+  },
+  {
+   "prompt_variant": "generic_then_personalized",
+   "generator": "gpt-5.2",
+   "memory_much": 7,
+   "memory_slightly": 11,
+   "tie": 10,
+   "no_memory_slightly": 22,
+   "no_memory_much": 14
+  },
+  {
+   "prompt_variant": "least",
+   "generator": "anthropic/claude-opus-5",
+   "memory_much": 6,
+   "memory_slightly": 2,
+   "tie": 1,
+   "no_memory_slightly": 0,
+   "no_memory_much": 0
+  },
+  {
+   "prompt_variant": "least",
+   "generator": "google/gemini-3.1-pro-preview",
+   "memory_much": 8,
+   "memory_slightly": 7,
+   "tie": 8,
+   "no_memory_slightly": 16,
+   "no_memory_much": 16
+  },
+  {
+   "prompt_variant": "least",
+   "generator": "gpt-5.2",
+   "memory_much": 10,
+   "memory_slightly": 19,
+   "tie": 13,
+   "no_memory_slightly": 11,
+   "no_memory_much": 10
+  },
+  {
+   "prompt_variant": "normal",
+   "generator": "anthropic/claude-opus-5",
+   "memory_much": 17,
+   "memory_slightly": 8,
+   "tie": 8,
+   "no_memory_slightly": 9,
+   "no_memory_much": 10
+  },
+  {
+   "prompt_variant": "normal",
+   "generator": "google/gemini-3.1-pro-preview",
+   "memory_much": 10,
+   "memory_slightly": 5,
+   "tie": 6,
+   "no_memory_slightly": 23,
+   "no_memory_much": 28
+  },
+  {
+   "prompt_variant": "normal",
+   "generator": "gpt-5.2",
+   "memory_much": 30,
+   "memory_slightly": 36,
+   "tie": 31,
+   "no_memory_slightly": 40,
+   "no_memory_much": 11
+  }
+ ]
+}

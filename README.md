@@ -18,6 +18,14 @@ and de-identification, so its numbers differ slightly from the paper's 291 pairs
 | Claude-Opus-5 | 39 | 74.4% |
 | **All** | **262** | **45.4%** |
 
+Over all 658 judgments, including slight preferences and ties (`data/judgment_counts.json`):
+
+| Prompting regime | Memory | No memory | Tie |
+|---|---:|---:|---:|
+| Conservative | 40.9% | 41.7% | 17.3% |
+| Ordinary | 39.0% | 44.5% | 16.5% |
+| Aggressive | 35.1% | 46.6% | 18.3% |
+
 ```python
 from memrm.data import load_pairs, memory_response, no_memory_response, label
 pairs = load_pairs()   # label(pair) == 1 if the memory-conditioned response was preferred
@@ -25,8 +33,10 @@ pairs = load_pairs()   # label(pair) == 1 if the memory-conditioned response was
 
 ## Results
 
+All statistics of the release are on one page: [`results/summary.md`](results/summary.md).
+
 Preference-prediction accuracy (%) on the 253 released pairs with rubric features
-(participant-grouped nested cross-validation; full table in `results/prediction_accuracy.md`).
+(participant-grouped nested cross-validation).
 
 | Predictor | All | GPT-5.2 | Gemini | Claude |
 |---|---:|---:|---:|---:|
@@ -40,6 +50,7 @@ Preference-prediction accuracy (%) on the 253 released pairs with rubric feature
 
 ```bash
 pip install -r requirements.txt
+python scripts/summarize.py                                   # every statistic -> results/summary.md
 python scripts/win_rates.py                                   # memory vs no-memory win rates
 python scripts/rubric_regression.py --features features/rubric_features.csv [--block memory|response]
 python scripts/evaluate.py --pairs-in features/rubric_features.csv predictions/rubric_regression.jsonl
@@ -68,8 +79,8 @@ generation, screening, judge, feature-scoring and rubric-induction prompts.
 - Every memory, query and note was reviewed for special-category data under GDPR (health,
   religion, ethnic origin, political opinion, sex life), offence data and information about
   third parties. Such content was removed or generalised.
-- Responses were not rewritten. If a response relied on removed information, the whole pair
-  was withheld.
+- Apart from these identifier replacements, responses were not rewritten. If a response relied
+  on removed information, the whole pair was withheld.
 
 Please do not attempt to identify participants. To report identifying content or a withdrawal
 request, contact yd358@cam.ac.uk.

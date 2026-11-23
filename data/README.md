@@ -33,8 +33,11 @@ relevant. See Section 3 and Appendix A of the paper.
    retrieved ones, preference inconsistent with the recorded condition.
 2. Comparisons between a memory-conditioned and a no-memory response.
 3. Clear preferences only (`a_much` / `b_much`). "Slightly better" and "about the same"
-   judgments are not released. Test–retest agreement was much lower for slight preferences
-   (Section 3.4), so the paper trains and evaluates its predictors on clear preferences only.
+   judgments are not released as records. Test–retest agreement was much lower for slight
+   preferences (Section 3.4), so the paper trains and evaluates its predictors on clear
+   preferences only. `judgment_counts.json` gives the counts of all 658 judgments (84
+   participants) by prompting regime, generator and preference strength, after the same
+   exclusions; its `*_much` counts are exactly the released pairs.
 4. Responses from a fourth generator that was piloted in the second wave are excluded.
 5. De-identification (below) withheld 27 further pairs, and one further participant (6 pairs)
    was excluded by the study team.
