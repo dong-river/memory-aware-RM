@@ -11,13 +11,6 @@ answers, one with the participant's retrieved memories in context and one withou
 (fields: [`data/README.md`](data/README.md)). The release re-applies the collection audit
 and de-identification, so its numbers differ slightly from the paper's 291 pairs.
 
-| Generator | Pairs | Memory response preferred |
-|---|---:|---:|
-| GPT-5.2 | 106 | 54.7% |
-| Gemini-3.1-Pro | 117 | 27.4% |
-| Claude-Opus-5 | 39 | 74.4% |
-| **All** | **262** | **45.4%** |
-
 Over all 658 judgments, including slight preferences and ties (`data/judgment_counts.json`):
 
 | Prompting regime | Memory | No memory | Tie |
@@ -68,26 +61,6 @@ Baselines: `scripts/run_llm_judge.py` (direct and rubric GPT-5.2 judges) and
 `scripts/run_skywork.py` (Skywork-Reward-V2, GPU). `prompts/` contains the collection,
 generation, screening, judge, feature-scoring and rubric-induction prompts.
 `results/paper_run/` has the induced rubrics and results of the paper run.
-
-## De-identification
-
-- Recruitment IDs, platform IDs, names, timestamps and other operational metadata were removed,
-  and participants were given random IDs.
-- Each pair includes only the nine memories retrieved for it, not the full profile.
-- Contact details are masked. Locations, venues, organisations and personal names are replaced
-  by typed placeholders (`[PERSON_1]`, `[LOCATION_1]`, …), consistent within each participant.
-- Every memory, query and note was reviewed for special-category data under GDPR (health,
-  religion, ethnic origin, political opinion, sex life), offence data and information about
-  third parties. Such content was removed or generalised.
-- Apart from these identifier replacements, responses were not rewritten. If a response relied
-  on removed information, the whole pair was withheld.
-
-Please do not attempt to identify participants. To report identifying content or a withdrawal
-request, contact yd358@cam.ac.uk.
-
-## License and citation
-
-Code: MIT. Data and prompts: CC BY-NC 4.0.
 
 ```bibtex
 @article{dong2026memoryaware,
